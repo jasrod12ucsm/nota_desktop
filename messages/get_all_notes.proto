@@ -1,0 +1,50 @@
+syntax = "proto3";
+package get_all_notes;
+
+// [RINF:DART-SIGNAL]
+message GetAllNotesInputMessage{
+
+}
+
+// [RINF:RUST-SIGNAL]
+message GetAllNotesOutputMessage{
+  repeated GetAllNotesOutput notes = 1;
+}
+
+// [RINF:RUST-SIGNAL]
+message GetAllNotesOutput {
+  string codigoNotaCredito = 1;
+  string precio = 2;
+  string motivo = 3;
+  string tipo = 4;
+  string facturaCodigo = 5;
+  string tipoMoneda = 6;
+  string precioNeto = 7;
+  string formaPago = 8;
+  string guiaRemisionTransportista = 9;
+  string igv = 10;
+  string guiaRemisionRemitente = 11;
+  string facturaImporte = 12;
+  string fechaEmision = 13;
+  string servicio = 14; // Puede ser null en JSON, pero aquí se maneja como string opcional
+  string clienteRuc = 15;
+  string clienteNombre = 16;
+  string clienteDepartamento = 17;
+  string clienteCalle = 18;
+  string clienteAvenida = 19;
+  string clienteDistrito = 20;
+  string clienteCiudad = 21;
+  string empresaNombre = 22;
+  string empresaDepartamento = 23;
+  string empresaCalle = 24;
+  string empresaAvenida = 25; // Puede ser null en JSON, pero aquí se maneja como string opcional
+  string empresaDistrito = 26;
+  string empresaCiudad = 27;
+  string empresaRuc = 28;
+  repeated string rutas = 29;
+  repeated string observaciones = 30;
+}
+// [RINF:RUST-SIGNAL]
+message BaseError{
+  string message = 1;
+}
