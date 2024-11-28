@@ -1,9 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-use crate::messages::{get_all_notes::{BaseError, GetAllNotesOutput, GetAllNotesOutputMessage}, get_by_id::GetByIdOutput};
+use crate::messages::{get_all_notes::BaseError, get_by_id::{GetByIdOutput, GetByIdOutputMessage}};
 
-#[derive(Clone, Serialize, Debug, Deserialize)]
-pub struct NotaCreditoModel {
+#[derive(Debug, Serialize, Deserialize)]
+pub struct GetByIdModel {
     #[serde(rename = "codigoNotaCredito")]
     pub codigo_nota_credito: String,
     #[serde(rename = "precio")]
@@ -66,8 +66,8 @@ pub struct NotaCreditoModel {
     pub observaciones: Vec<String>,
 }
 
-impl From<NotaCreditoModel> for GetAllNotesOutput {
-    fn from(value: NotaCreditoModel) -> Self {
+impl From<GetByIdModel> for GetByIdOutput {
+    fn from(value: GetByIdModel) -> Self {
         Self {
             codigo_nota_credito: value.codigo_nota_credito,
             precio: value.precio,
@@ -103,44 +103,7 @@ impl From<NotaCreditoModel> for GetAllNotesOutput {
     }
 }
 
-impl From<NotaCreditoModel> for GetByIdOutput{
-    fn from(value: NotaCreditoModel) -> Self {
-        Self {
-            codigo_nota_credito: value.codigo_nota_credito,
-            precio: value.precio,
-            motivo: value.motivo,
-            tipo: value.tipo,
-            factura_codigo: value.factura_codigo,
-            tipo_moneda: value.tipo_moneda,
-            precio_neto: value.precio_neto,
-            forma_pago: value.forma_pago,
-            guia_remision_transportista: value.guia_remision_transportista,
-            igv: value.igv,
-            guia_remision_remitente: value.guia_remision_remitente,
-            factura_importe: value.factura_importe,
-            fecha_emision: value.fecha_emision,
-            servicio: value.servicio.unwrap_or("".to_string()),
-            cliente_ruc: value.cliente_ruc,
-            cliente_nombre: value.cliente_nombre,
-            cliente_departamento: value.cliente_departamento,
-            cliente_calle: value.cliente_calle,
-            cliente_avenida: value.cliente_avenida.unwrap_or("".to_string()),
-            cliente_distrito: value.cliente_distrito,
-            cliente_ciudad: value.cliente_ciudad,
-            empresa_nombre: value.empresa_nombre,
-            empresa_departamento: value.empresa_departamento,
-            empresa_calle: value.empresa_calle,
-            empresa_avenida: value.empresa_avenida.unwrap_or("".to_string()),
-            empresa_distrito: value.empresa_distrito,
-            empresa_ciudad: value.empresa_ciudad,
-            empresa_ruc: value.empresa_ruc,
-            rutas: value.rutas,
-            observaciones: value.observaciones,
-        }
-    }
-}
-#[derive(Debug)]
-pub enum GetAllNotaCreditoResponse {
-    Success(GetAllNotesOutputMessage),
+pub enum GetOneNotaCreditoResponse {
+    Success(GetByIdOutputMessage),
     Error(BaseError),
 }

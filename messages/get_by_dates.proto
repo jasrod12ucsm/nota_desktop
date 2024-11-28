@@ -1,0 +1,21 @@
+syntax = "proto3";
+package get_by_dates;
+
+// [RINF:DART-SIGNAL]
+message GetAllNotesByDateInputMessage{
+    string fechaInicio = 1;
+    string fechaFin = 2;
+}
+
+// [RINF:RUST-SIGNAL]
+message GetAllNotesByDateOutputMessage{
+  repeated GetAllNotesByDateOutput notes = 1;
+}
+
+
+message GetAllNotesByDateOutput {
+    string codigoNotaCredito = 1;
+    string precio = 2;
+    string motivo = 3;
+    string fechaEmision = 4;
+}

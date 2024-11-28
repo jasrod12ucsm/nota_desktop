@@ -5,7 +5,7 @@ use crate::{
         domain::{
             datasource::nota_credito_datasource::NotaCreditoDataSourceTrait,
             models::{
-                get_by_motive_model::GetByMotiveModelResponse, nota_credito_model::GetAllNotaCreditoResponse, total_recouded_model::TotalRecaudedModelResponse
+                get_by_dates_model::GetByDatesModelResponse, get_by_id_model::GetOneNotaCreditoResponse, get_by_motive_model::GetByMotiveModelResponse, nota_credito_model::GetAllNotaCreditoResponse, total_recouded_model::TotalRecaudedModelResponse
             },
             repository::nota_credito_repository::NotaCreditoRepositoryTrait,
         },
@@ -33,5 +33,17 @@ impl NotaCreditoRepositoryTrait for NotaCreditoRepository {
     }
     async fn get_by_motive(&self) -> Result<GetByMotiveModelResponse, ErrorHeader> {
         self.nota_credito_datasource.get_by_motive().await
+    }
+    async fn get_by_dates(
+        &self,
+        date1: String,
+        date2: String,
+    ) -> Result<GetByDatesModelResponse, ErrorHeader> {
+        self.nota_credito_datasource
+            .get_by_dates(date1, date2)
+            .await
+    }
+    async fn find_by_id(&self, id: String) -> Result<GetOneNotaCreditoResponse, ErrorHeader> {
+        self.nota_credito_datasource.find_by_id(id).await
     }
 }

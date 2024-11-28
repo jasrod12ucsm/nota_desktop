@@ -1,9 +1,7 @@
 use std::sync::Arc;
 
 use crate::{
-    common, messages::total_recauded::TotalRecaudedInputMessage,
-    nota_credito::infrastructure::containers::containers::NotaCreditoRepo,
-    shared::domain::task_entity::TaskEntity,
+    common, messages::total_recauded::TotalRecaudedInputMessage, nota_credito::infrastructure::containers::containers::NotaCreditoRepo, shared::domain::task_entity::TaskEntity
 };
 
 pub struct GetPriceByTask;

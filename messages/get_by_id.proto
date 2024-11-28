@@ -1,17 +1,17 @@
 syntax = "proto3";
-package get_all_notes;
+package get_by_id;
+
 
 // [RINF:DART-SIGNAL]
-message GetAllNotesInputMessage{
-
+message GetByIdInputMessage{
+    string codigoNotaCredito = 1;
 }
 // [RINF:RUST-SIGNAL]
-message GetAllNotesOutputMessage{
-  repeated GetAllNotesOutput notes = 1;
+message GetByIdOutputMessage{
+  repeated GetByIdOutput notes = 1;
 }
-
 // [RINF:RUST-SIGNAL]
-message GetAllNotesOutput {
+message GetByIdOutput {
   string codigoNotaCredito = 1;
   string precio = 2;
   string motivo = 3;
@@ -44,6 +44,6 @@ message GetAllNotesOutput {
   repeated string observaciones = 30;
 }
 // [RINF:RUST-SIGNAL]
-message BaseError{
+message GetByIdError{
   string message = 1;
 }
