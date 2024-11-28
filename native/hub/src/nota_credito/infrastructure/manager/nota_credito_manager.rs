@@ -6,7 +6,7 @@ use crate::nota_credito::{
         containers::containers::NotaCreditoRepo,
         repository::nota_credito_repository::NotaCreditoRepository,
         tasks::{
-            get_all_nota_credito_task::GetAllNotaCreditoTask, get_price_by_type::GetPriceByTask,
+            get_all_nota_credito_task::GetAllNotaCreditoTask, get_by_motive_task::GetByMotiveTask, get_price_by_type::GetPriceByTask
         },
     },
 };
@@ -20,7 +20,9 @@ impl NotaCreditoManager {
             nota_credito_repository,
         )));
         let repo_nota_2 = Arc::clone(&repo_nota);
+        let repo_nota_3 = Arc::clone(&repo_nota);
         tokio::spawn(GetAllNotaCreditoTask::run(repo_nota));
         tokio::spawn(GetPriceByTask::run(repo_nota_2));
+        tokio::spawn(GetByMotiveTask::run(repo_nota_3));
     }
 }

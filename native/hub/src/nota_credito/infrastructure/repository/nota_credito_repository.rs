@@ -4,7 +4,9 @@ use crate::{
     nota_credito::{
         domain::{
             datasource::nota_credito_datasource::NotaCreditoDataSourceTrait,
-            models::{nota_credito_model::GetAllNotaCreditoResponse, total_recouded_model::TotalRecaudedModelResponse},
+            models::{
+                get_by_motive_model::GetByMotiveModelResponse, nota_credito_model::GetAllNotaCreditoResponse, total_recouded_model::TotalRecaudedModelResponse
+            },
             repository::nota_credito_repository::NotaCreditoRepositoryTrait,
         },
         infrastructure::datasource::nota_credito_datasource::NotaCreditoDataSource,
@@ -28,5 +30,8 @@ impl NotaCreditoRepositoryTrait for NotaCreditoRepository {
     }
     async fn get_total_recauded(&self) -> Result<TotalRecaudedModelResponse, ErrorHeader> {
         self.nota_credito_datasource.get_total_recauded().await
+    }
+    async fn get_by_motive(&self) -> Result<GetByMotiveModelResponse, ErrorHeader> {
+        self.nota_credito_datasource.get_by_motive().await
     }
 }
