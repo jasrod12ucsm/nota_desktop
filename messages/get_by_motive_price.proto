@@ -1,0 +1,16 @@
+syntax = "proto3";
+package get_by_motive_price;
+
+// [RINF:DART-SIGNAL]
+message GetByMotivePriceInputMessage{}
+
+// [RINF:RUST-SIGNAL]
+message GetByMotivePriceOutputMessage{
+  repeated GetByMotivePriceOutput notes = 1;
+}
+
+message GetByMotivePriceOutput{
+    string motivo=1;
+    string cantidad=2;
+    string total_precio=3;
+}

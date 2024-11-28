@@ -1,0 +1,16 @@
+syntax = "proto3";
+package total_recauded;
+
+// [RINF:DART-SIGNAL]
+message TotalRecaudedInputMessage{
+
+}
+
+// [RINF:RUST-SIGNAL]
+message TotalRecaudedOutputMessage{
+   string totalRecaudedT = 1;
+    string totalRecaudedP =2;
+}
+
+
+
